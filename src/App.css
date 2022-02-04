@@ -87,6 +87,9 @@ button:hover {
 .text-center {
   text-align: center;
 }
+.justify-right{
+  justify-content: right;
+}
 /* loader */
 .lds-ring {
   display: inline-block;
