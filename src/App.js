@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import MainPage from './pages/MainPage';
+import ProductPage from './pages/ProductPage';
+import { MyContext } from './context/MyContext';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { useState } from 'react';
 
 function App() {
+  const [getProduct, setProduct] = useState(null)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <MyContext.Provider value={{ getProduct, setProduct }}>
+        <BrowserRouter>
+
+          <Routes>
+            <Route path='/' element={<MainPage />} />
+            <Route path='/product' element={<ProductPage />} />
+          </Routes>
+
+        </BrowserRouter>
+      </MyContext.Provider>
     </div>
   );
 }
